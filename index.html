@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10111b">
+  <title>ShadowBrowse — Private browsing workspace</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" id="brandHome"><span class="brand-mark">◈</span><span>Shadow<span class="brand-light">Browse</span></span></a>
+      <div class="private-pill"><span class="status-dot"></span> PRIVATE SESSION</div>
+      <button class="icon-button" id="themeButton" title="Toggle theme" aria-label="Toggle theme">☼</button>
+      <button class="icon-button" id="settingsButton" title="Settings" aria-label="Settings">⚙</button>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span>✦</span> YOUR QUIETER CORNER OF THE WEB</div>
+      <h1>Browse with a little<br><span>more breathing room.</span></h1>
+      <p class="hero-copy">A simple browser-style workspace. Enter a web address or search for something to get started.</p>
+    </section>
+
+    <section class="browser" aria-label="Browser">
+      <div class="tab-strip" id="tabStrip">
+        <button class="new-tab" id="newTabButton" title="New tab" aria-label="New tab">+</button>
+        <span class="tab-spacer"></span>
+        <span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span>
+      </div>
+      <form class="toolbar" id="addressForm">
+        <button class="nav-button" type="button" id="backButton" title="Home" aria-label="Home">⌂</button>
+        <button class="nav-button" type="button" id="reloadButton" title="Reload" aria-label="Reload">↻</button>
+        <div class="address-wrap">
+          <span class="lock-icon">⌑</span>
+          <input id="addressInput" type="text" placeholder="Search or enter a website address" autocomplete="off" spellcheck="false">
+          <button class="bookmark-button" type="button" id="bookmarkButton" title="Bookmark this page" aria-label="Bookmark this page">☆</button>
+          <button class="go-button" type="submit">Go <span>↗</span></button>
+        </div>
+      </form>
+      <div class="bookmarks-bar" id="bookmarksBar"><span class="bookmark-label">BOOKMARKS</span><span id="bookmarkList" class="bookmark-list"></span></div>
+      <div class="viewport" id="viewport">
+        <div class="welcome" id="welcome">
+          <div class="welcome-symbol">◈</div>
+          <h2>Where would you like to go?</h2>
+          <p>Type a website address above, or try a search.</p>
+          <div class="quick-links">
+            <button class="quick-link" data-url="https://www.wikipedia.org"><span>W</span> Wikipedia</button>
+            <button class="quick-link" data-url="https://www.nasa.gov"><span>✦</span> NASA</button>
+            <button class="quick-link" data-url="https://www.mozilla.org"><span>🦊</span> Mozilla</button>
+          </div>
+          <p class="hint">Some websites don't allow embedded viewing. If one doesn't load, use the external link in the notice.</p>
+        </div>
+        <div class="loading" id="loading" hidden><span class="spinner"></span> Loading page…</div>
+        <iframe id="browserFrame" title="Website preview" referrerpolicy="no-referrer" sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" hidden></iframe>
+        <div class="blocked-notice" id="blockedNotice" hidden>
+          <div class="notice-icon">↗</div><h2>This site may not allow embedded viewing</h2>
+          <p>Many websites prevent display inside another website. This is a browser limitation, not necessarily a problem with the address.</p>
+          <a id="externalLink" href="#" target="_blank" rel="noopener noreferrer">Open this website in a new tab ↗</a>
+        </div>
+      </div>
+      <div class="statusbar"><span><i></i> Ready</span><span>Private-style preview · No browsing history saved</span></div>
+    </section>
+    <footer class="footer"><span>◈ ShadowBrowse</span><span>Private-style interface · No account required</span></footer>
+  </main>
+
+  <dialog id="settingsDialog" class="settings-dialog">
+    <form method="dialog" class="settings-head"><div><span class="eyebrow">PREFERENCES</span><h2>Settings</h2></div><button class="close-button" aria-label="Close settings">×</button></form>
+    <div class="setting-row"><div><strong>Appearance</strong><p>Switch between dark and light themes.</p></div><button id="dialogThemeButton" class="setting-action" type="button">Toggle theme</button></div>
+    <div class="setting-row"><div><strong>Private session</strong><p>ShadowBrowse does not save your browsing history. Bookmarks are stored on this device.</p></div><span class="setting-tag">ON</span></div>
+    <div class="setting-row"><div><strong>Clear bookmarks</strong><p>Remove all saved bookmark shortcuts from this browser.</p></div><button id="clearBookmarksButton" class="setting-action danger" type="button">Clear</button></div>
+    <p class="settings-note">Private-style mode does not make you invisible to websites, your browser, your network, or your internet provider.</p>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
